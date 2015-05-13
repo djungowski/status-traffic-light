@@ -17,7 +17,7 @@ jenkins = Jenkins(config["jenkins"]["host"], requester=requester)
 # Monkeypatch the jenkinsapi provided view
 ViewMonkeypatch().apply()
 
-view_url = config["jenkins"]["host"] + config["jenkins"]["view"]
+view_url = config["jenkins"]["host"] + "/view/" + config["jenkins"]["view"]
 view = jenkins.get_view_by_url(view_url)
 jobs = view.get_jobs()
 status = Status(jobs)
