@@ -1,0 +1,5 @@
+[jenkins]
+base_url = https://yourjenkins.yourcompany.com
+username = jenkins_username
+password = jenkins_password
+view = ViewName

@@ -4,10 +4,10 @@
 jenkinsapi: http://pythonhosted.org//jenkinsapi
 
 # Running
-Create a file config.ini with the following structure:
+Copy config.ini.example to config.ini and enter your URLs and credentials. For example
 
 		[jenkins]
-        host = https://yourjenkins.fqdn
-        username = yourusername
-        password = yourpassword
-        view = NameOfTheJenkinsView
+        host = https://jenkins.company.com
+        username = automation_user
+        password = Au7oM4ati0nUsR
+        view = AllBuilds
