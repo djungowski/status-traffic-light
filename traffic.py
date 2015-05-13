@@ -5,6 +5,7 @@ from jenkinsapi.jenkins import Requester
 from lib.view_monkeypatch import ViewMonkeypatch
 from lib.status import Status
 from configparser import ConfigParser
+from time import sleep
 
 config = ConfigParser()
 config.read("config.ini")
@@ -18,7 +19,11 @@ jenkins = Jenkins(config["jenkins"]["base_url"], requester=requester)
 ViewMonkeypatch().apply()
 
 view_url = config["jenkins"]["base_url"] + "/view/" + config["jenkins"]["view"]
-view = jenkins.get_view_by_url(view_url)
-jobs = view.get_jobs()
-status = Status(jobs)
-print(status.get())
+polling_interval = float(config["general"]["polling_interval"])
+
+while True:
+    view = jenkins.get_view_by_url(view_url)
+    jobs = view.get_jobs()
+    status = Status(jobs)
+    print(status.get())
+    sleep(polling_interval)
